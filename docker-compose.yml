@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./front-end:/var/www/front-end
+    ports:
+      - "80:80"
+
+  back-end:
+    image: api-flask
+    volumes:
+      - ./back-end/.env:/api-flask/.env
+    expose:
+      - "5000"
